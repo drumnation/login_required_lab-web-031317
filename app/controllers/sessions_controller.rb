@@ -1,11 +1,15 @@
 class SessionsController < ApplicationController
 
+  def show
+    @current_user = current_user
+  end
+
   def create
     if params[:name].blank?
-      redirect_to login_path
+      redirect_to :login
     else
       session[:name] = params[:name]
-      redirect_to secret_path
+      redirect_to :profile
     end
   end
 
